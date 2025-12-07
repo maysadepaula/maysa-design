@@ -1,19 +1,19 @@
 "use client";
 
 import { useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion"; // ADICIONEI "Variants" AQUI
 import { ArrowRight, ArrowUpRight, CheckCircle, XCircle, MessageCircle, PenTool, Box, Instagram, Linkedin, Mail, Zap, Smartphone, Layout, Github, Palette } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image"; 
 import Lenis from 'lenis';
 
-// --- Configurações de Animação ---
-const fadeInUp = {
+// --- Configurações de Animação (Tipagem Corrigida) ---
+const fadeInUp: Variants = { // Adicionei ": Variants" aqui
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const stagger = {
+const stagger: Variants = { // Adicionei ": Variants" aqui
   visible: { transition: { staggerChildren: 0.1 } }
 };
 
@@ -27,7 +27,7 @@ export default function Home() {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      // REMOVI A LINHA "smooth: true" DAQUI
+      smooth: true,
       touchMultiplier: 2,
     });
 
@@ -50,7 +50,7 @@ export default function Home() {
           <div className="font-bold text-2xl tracking-tighter text-white">
             Maysa<span className="text-tayo-green">.</span>
           </div>
-          <Link href={whatsappLink} target="_blank" className="hidden md:flex items-center gap-2 bg-tayo-green/10 border border-tayo-green/50 px-6 py-2 rounded-full text-sm font-bold text-tayo-green hover:bg-tayo-green hover:text-black transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+          <Link href={whatsappLink} target="_blank" className="hidden md:flex items-center gap-2 bg-[#0fa372] text-black px-6 py-2 rounded-full text-sm font-bold shadow-[0_0_15px_rgba(16,185,129,0.5)] hover:shadow-[0_0_25px_rgba(16,185,129,0.8)] hover:scale-105 transition-all">
             Solicitar Orçamento <MessageCircle size={16} />
           </Link>
         </div>
@@ -120,7 +120,6 @@ export default function Home() {
             <div className="relative group">
                <div className="absolute -inset-4 bg-gradient-to-br from-tayo-green/20 to-tayo-blue/20 rounded-[2rem] blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
                <div className="relative rounded-[2rem] overflow-hidden border border-white/10 aspect-[3/4] bg-[#0A0C28]">
-                  {/* FOTO PERFIL CORRIGIDA (.jpeg) */}
                   <Image 
                     src="/maysa1.jpeg" 
                     alt="Foto de Maysa de Paula"
@@ -156,7 +155,7 @@ export default function Home() {
 
               <div className="mt-10 pt-10 border-t border-white/10 flex items-center gap-4">
                  <div className="h-1 w-12 bg-tayo-green rounded-full" />
-                 <span className="text-sm font-bold tracking-widest uppercase text-tayo-green">Founder & Developer</span>
+                 <span className="text-sm font-bold tracking-widest uppercase text-tayo-green">Maysa Design • Founder & Developer</span>
               </div>
             </div>
 
@@ -174,7 +173,6 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* NÃO RECEBE */}
             <div className="bg-[#0A0205] border border-red-900/30 p-10 rounded-3xl relative overflow-hidden">
               <h3 className="text-2xl font-bold text-red-500 mb-8 flex items-center gap-3">
                 <XCircle /> O que você NÃO recebe:
@@ -187,7 +185,6 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* RECEBE */}
             <div className="bg-[#010503] border border-tayo-green/30 p-10 rounded-3xl relative overflow-hidden shadow-[0_0_40px_rgba(16,185,129,0.05)]">
               <div className="absolute top-0 right-0 p-10 opacity-10 pointer-events-none">
                 <CheckCircle size={100} className="text-tayo-green" />
@@ -258,13 +255,12 @@ export default function Home() {
 
       {/* --- PROJETOS --- */}
       <section id="projetos" className="py-32 px-6 bg-[#000115] relative">
-         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-tayo-green/5 rounded-full blur-[120px] pointer-events-none" />
+         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-tayo-green/5 rounded-full blur-[100px] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-20 text-center">Projetos <span className="text-tayo-blue">Exclusivos</span></h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             
-            {/* PROJETO 1: YABATAN (.png) */}
             <div className="group cursor-pointer">
               <div className="relative overflow-hidden rounded-[2rem] border border-tayo-blue/20 aspect-[4/3] bg-[#000220] mb-6 group-hover:border-tayo-green/50 transition-colors shadow-lg">
                 <Image 
@@ -283,7 +279,6 @@ export default function Home() {
               <p className="text-blue-200/60 mt-2">Site Institucional • Decoração de Eventos</p>
             </div>
 
-            {/* PROJETO 2: LIVRARIA (.png) */}
             <div className="group cursor-pointer md:mt-20">
               <div className="relative overflow-hidden rounded-[2rem] border border-tayo-blue/20 aspect-[4/3] bg-[#000220] mb-6 group-hover:border-tayo-blue/50 transition-colors shadow-lg">
                 <Image 
@@ -332,7 +327,7 @@ export default function Home() {
       <footer className="py-20 text-center bg-[#000230] border-t border-tayo-blue/20 relative overflow-hidden">
          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-tayo-blue/10 rounded-full blur-[100px] pointer-events-none" />
         
-        {/* BOTÃO FOOTER */}
+        {/* BOTÃO FOOTER (IGUAL AO HERO) */}
         <div className="mb-16 flex justify-center relative z-10">
            <Link 
                 href={whatsappLink} 
