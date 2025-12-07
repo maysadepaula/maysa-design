@@ -1,19 +1,19 @@
 "use client";
 
 import { useEffect } from "react";
-import { motion, useScroll, useTransform, Variants } from "framer-motion"; // ADICIONEI "Variants" AQUI
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { ArrowRight, ArrowUpRight, CheckCircle, XCircle, MessageCircle, PenTool, Box, Instagram, Linkedin, Mail, Zap, Smartphone, Layout, Github, Palette } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image"; 
 import Lenis from 'lenis';
 
 // --- Configurações de Animação (Tipagem Corrigida) ---
-const fadeInUp: Variants = { // Adicionei ": Variants" aqui
+const fadeInUp: Variants = { 
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const stagger: Variants = { // Adicionei ": Variants" aqui
+const stagger: Variants = { 
   visible: { transition: { staggerChildren: 0.1 } }
 };
 
@@ -27,7 +27,7 @@ export default function Home() {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smooth: true,
+      // REMOVIDO: smooth: true (Isso causava o erro)
       touchMultiplier: 2,
     });
 
@@ -327,7 +327,7 @@ export default function Home() {
       <footer className="py-20 text-center bg-[#000230] border-t border-tayo-blue/20 relative overflow-hidden">
          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-tayo-blue/10 rounded-full blur-[100px] pointer-events-none" />
         
-        {/* BOTÃO FOOTER (IGUAL AO HERO) */}
+        {/* BOTÃO FOOTER */}
         <div className="mb-16 flex justify-center relative z-10">
            <Link 
                 href={whatsappLink} 
